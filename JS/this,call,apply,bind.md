@@ -124,6 +124,54 @@ add.bind(sub, 5, 3)() // 调用后返回8
 
 
 
+## 源码实现
+
+```javascript
+Function.prototype.myCall = function(obj) {
+  obj.fn = this
+  const args = [...arguments].splice(1)
+  const result = obj.fn(...args)
+  delete obj.fn
+  return result
+}
+
+Function.prototype.myApply = function(obj) {
+  obj.fn = this
+  const args = arguments[1]
+  let result = args? obj.fn(...args) : obj.fn()
+  delete obj.fn
+  return result
+}
+
+Function.prototype.myBind = function(obj) {
+  const context = obj || window
+  const that = this
+  const _args = [...arguments].splice(1)
+  
+  return function() {
+    const args = arguments
+    return that.apply(context, [..._args, ...args])
+  }
+}
+
+const obj = {
+  value: 'hello world'
+}
+
+function helloWorld(a, b) {
+  console.log(this.value)
+  console.log(a, b)
+}
+
+console.log(helloWorld.call(obj, 'hello', 'world')) // 'hello world', 'hello', 'world'
+console.log(helloWorld.apply(obj, ['hello', 'world'])) // 'hello world', 'hello', 'world'
+console.log(helloWorld.bind(obj)('hello', 'world')) // 'hello world', 'hello', 'world'
+```
+
+
+
+
+
 ## 总结
 
 call 和 apply 的主要作用是改变对象执行上下文，并且是立即执行。他们在参数上的写法略有区别

@@ -144,7 +144,7 @@ console.log(toString.call(10n)) // [object BigInt]
 
 ## null 和 undefined 的区别
 
-undefined 时访问一个为初始化的变量时返回的值，而 null 是访问一个尚未存在的对象时所返回的值
+undefined 是访问一个未初始化的变量时返回的值，而 null 是访问一个尚未存在的对象时所返回的值
 
 undefined 看作是空的变量，null 看作是空的对象
 

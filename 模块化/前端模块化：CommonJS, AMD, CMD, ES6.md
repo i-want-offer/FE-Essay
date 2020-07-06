@@ -6,7 +6,7 @@
 
 ## CommonJS
 
-Node.JS 是 CommonJS 规范的主要践行者，它有四个重要的环境变量为模块化的实现提供支持：module、exports、require、global。实际使用时，推荐使用 module.exports 定义当前模块对外输出的接口，用 require 记载模块。
+Node.JS 是 CommonJS 规范的主要践行者，它有四个重要的环境变量为模块化的实现提供支持：module、exports、require、global。实际使用时，推荐使用 module.exports 定义当前模块对外输出的接口，用 require 加载模块。
 
 CommonJS 用同步的方式加载模块，在服务端，模块文件都存在本地磁盘，读取速度非常快，所以问题不大。但在浏览器，受限于网络原因，更合理的方式是使用异步加载。
 

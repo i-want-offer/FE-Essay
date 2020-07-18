@@ -31,5 +31,11 @@
 
 ## ES6/ES7/ES8 的特性
 
+[ES6+ 新特性](https://github.com/LaamGinghong/FE-Interview-questions/blob/master/JS/ES6%2B%E6%96%B0%E7%89%B9%E6%80%A7.md)
 
+
+
+## 说说 DOM 事件流
+
+[JS DOM 事件流](https://github.com/LaamGinghong/FE-Interview-questions/blob/master/JS/DOM%E4%BA%8B%E4%BB%B6.md)
 

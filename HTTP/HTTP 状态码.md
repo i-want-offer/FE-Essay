@@ -162,4 +162,117 @@
 
      >   服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或者多个。这个状态码允许客户端在获取资源的请求的元信息（请求头字段数据）中设置先决条件，以此来避免该请求方法被应用到其希望的内容以外的资源上。
 
-14.  
+14.  413 Payload Too Large
+
+     >   服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。此种情况下，服务器可以关闭连接以免客户端继续发送此请求。如果这种状况是临时的，服务器应当返回一个 Refty-After 的响应头，以告知客户端可以在多少时间以后重新尝试。
+
+15.  414 URL Too Long
+
+     >   请求的 URL 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。这比较少见，通常情况包括：本应使用 POST 方法的表单提交变成了 GET 方法，导致查询字符串（Query String）过长。
+
+16.  415 Unsupported Media Type
+
+     >   对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器所支持的格式，因此请求被拒绝。
+
+17.  416 Range Not Satisfiable
+
+     >   如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回 416 状态码。
+
+18.  417 Expectation Failed
+
+     >   此响应代码意味着服务器无法满足 Expect 请求标头字段指示的期望值。
+
+19.  418 I'm a teapot
+
+     >   服务器拒绝尝试用“茶壶冲泡咖啡”。
+
+20.  421 Misdirected Request
+
+     >   该请求针对的是无法产生响应的服务器。这可以由服务器发送，该服务器为配置为针对包含在请求 URL 中的方案和权限的组合产生响应。
+
+21.  422 Unprocessable Entity（[WebDAV](https://developer.mozilla.org/en-US/docs/Glossary/WebDAV)）
+
+     >   请求格式良好，但由于语义错误而无法遵循。
+
+22.  423 Locked（[WebDAV](https://developer.mozilla.org/en-US/docs/Glossary/WebDAV)）
+
+     >   正在访问的资源被锁定。
+
+23.  424 Failed Dependency（[WebDAV](https://developer.mozilla.org/en-US/docs/Glossary/WebDAV)）
+
+     >   由于先前的请求失败，所以这次请求失败。
+
+24.  425 Too Early
+
+     >   服务器不愿意冒着风险去处理可能重播的请求。
+
+25.  426 Upgrade Required
+
+     >   服务器拒绝使用当前协议执行请求，但可能在客户机升级到其他协议后愿意这样做。服务器在 426 响应中发送 Upgrade 头一直是所需的协议。
+
+26.  428 Precondition Required
+
+     >   原始服务器要求该请求是有条件的。旨在防止“丢失更新”问题，即客户端获取资源状态，修改改状态并将其返回服务器，同时第三方修改服务器上的状态，从而导致冲突。
+
+27.  429 Too Many Requests
+
+     >   用户在给定时间内发送了太多请求（“限制请求速率”）。
+
+28.  431 Request Header Fields Too Large
+
+     >   服务器不愿意处理请求，因为他的请求头字段太大。请求可以在减少请求头字段的大小后重新提交。
+
+29.  451 Unavailable For Legal Reasons
+
+     >   用户请求非法资源，例如：由政府审查的网页。
+
+
+
+# 服务端响应
+
+1.  500 Internal Server Error
+
+    >   服务器遇到了不知道如何处理的情况。
+
+2.  501 Not Implemented
+
+    >   此请求方法不被服务器支持且无法被处理。只有 GET 和 HEAD 时要求服务器支持的，他们必定不会返回次错误代码。
+
+3.  502 Bad Gateway
+
+    >   此错误响应表明服务器作为网关需要得到一个处理这个请求的响应，但是得到一个错误的响应。
+
+4.  503 Service Unavailable
+
+    >   服务器没有准备好处理请求。常见原因是服务器因维护或重载而停机。请注意，与此响应一起，应发送解释问题的用户友好页面。这个响应应该用于临时条件和 Retry-After：如果可能的话，HTTP 头应该包含恢复服务之前的估计时间。网站管理员还必须注意与此响应一起发送的与缓存相关的标头，因为这些临时条件响应通常不应被缓存。
+
+5.  504 Gateway Timeout
+
+    >   当服务器作为网关，不能及时得到响应时返回此错误代码。
+
+6.  505 HTTP Version Not Supported
+
+    >服务器不支持请求中所使用的 HTTP 协议版本。
+
+7.  506 Variant Also Negotiates
+
+    >   服务器有一个内部配置错误：对请求的透明内容协议导致循环引用。
+
+8.  507 Insufficient Storage
+
+    >   服务器有内部配置错误：所选的变体资源被配置为参与透明内容协商本身，因此不是协商过程中的适当端点。
+
+9.  508 Loop Detected（[WebDAV](https://developer.mozilla.org/en-US/docs/Glossary/WebDAV)）
+
+    >   服务器在处理请求时检测到无限循环。
+
+10.  510 Not Extended
+
+     >   客户端需要对请求进一步扩展，服务器才能实现它。服务器会回复客户端发出扩展请求所需的所有信息。
+
+11.  511 Network Authentication Required
+
+     >   511 状态码指示客户端需要进行身份验证才能获得网络访问权限。
+
+     
+

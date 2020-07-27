@@ -144,7 +144,7 @@ Object.is(NaN, 0/0) // true
 
 ## polyfill
 
->   Object.is() 不支持 IE，因此使用 polypill 代替
+>   Object.is() 不支持 IE，因此使用 polyfill 代替
 
 ```javascript
 if(!Object.is) {

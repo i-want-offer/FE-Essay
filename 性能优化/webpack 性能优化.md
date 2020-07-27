@@ -54,7 +54,7 @@ export default smp.wrap(config)
 
 >   缩小文件搜索范围，减少不必要的编译工作
 
-webpack 打包时，会从配置的 entry 触发，解析入口文件的导入语句，再递归解析。
+webpack 打包时，会从配置的 entry 出发，解析入口文件的导入语句，再递归解析。
 
 在遇到导入语句时，webpack 会做两件事情：
 

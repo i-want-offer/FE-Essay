@@ -17,7 +17,6 @@
  *   countOfLetters('C4(A(A3B)2)2'); // { A: 14, B: 4, C: 4 }
  */
 /**
- * 方法一
  * 思路：由于括号后面的数字是括号内字母的倍数，所以采用倒序的方式进行遍历
  */
 function countOfLetters(letters) {
@@ -120,26 +119,28 @@ function Foo(func, wait) {
  */
 function flatten(data) {
   /* 代码实现 */
-  const initial = {}
-  function helper(value, key = '') {
-    for (const i in value) {
-      if (typeof value[i] === 'object') {
-        let k = key + i
-        if (Array.isArray(value)) {
-          k = key + '[' + i + ']'
-        }
-        helper(value[i], k)
+  var hashMap = {}
+  
+  function helper(data, key = '') {
+    for(var i in data) {
+      if(data[i] === null || data[i] === undefined) continue
+      var k 
+      if(Array.isArray(data)) {
+        k = key? `${key}[${i}]` : i
       } else {
-        let k = key + '.' + i
-        if (Array.isArray(value)) {
-          k = key + '[' + i + ']'
-        }
-        initial[`${key ? k : i}`] = value[i]
+        k = key? `${key}.${i}` : i
+      }
+      if(typeof data[i] === 'object') {
+				helper(data[i], k)
+      } else {
+        hashMap[k] = data[i]
       }
     }
   }
+  
   helper(data)
-  return initial
+  
+  return hashMap
 }
 ```
 

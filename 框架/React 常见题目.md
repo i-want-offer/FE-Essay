@@ -14,20 +14,83 @@ key 是 React 用来追踪哪些列表元素被修改、被添加或者被移除
 
 # React 生命周期函数
 
-*   初始化阶段
-    *   getDefaultProps：获取实例默认属性
-    *   getInitialState：获取每个实例的初始化状态
-    *   ~~componentWillMount：组件即将被装载、渲染到页面上~~
-    *   render：组件在这里生成虚拟 DOM 的节点
-    *   componentDidMount：组件在真正装载在页面上
-*   运行中状态
-    *   componentWillReceiveProps：组件将要接收到属性的时候调用
-    *   shouldComponentUpdate：组件接收到新属性或者新状态的时候，通过返回一个布尔值来决定是否需要重新渲染，可以精细的diff
-    *   ~~componentWillUpdate：组件即将更新，不能修改属性和状态~~
-    *   render：组件重新渲染
-    *   componentDidUpdate：组件已经更新
-*   销毁阶段
-    *   componentWillUnmount：组件即将销毁
+## 挂载阶段
+
+挂载阶段也可以理解为初始化阶段，也就是把我们的组件插入到 DOM 中。
+
+*   constructor
+*   getDerivedStateFromProps
+*   ~~UNSAFE_componentWillMount~~
+*   render
+*   (React Updates DOM and refs)
+*   componentDidMount
+
+### constructor
+
+组件的构造函数，第一个被执行。显式定义构造函数时，需要在第一行执行 `super(props)`，否则不能再构造函数中拿到 `this`。
+
+在构造函数中，我们一般会做两件事：
+
+*   初始化 state
+*   对自定义方法进行 this 绑定
+
+### getDerivedStateFromProps
+
+是一个静态函数，所以不能在这里使用 this，也表明了 React 官方不希望调用方滥用这个生命周期函数。每当父组件引发当前组件的渲染过程时，getDerivedStateFromProps 都会被调用，这样我们有机会根据新的 props 和当前的 state 来调整一个新的 state。
+
+这个函数会在收到新的 props，调用了 setState 或 forceUpdate 时被调用。
+
+### render
+
+React 最核心的方法，class 组件中必须实现的方法。
+
+当 render 被调用时，它会检查 `this.props` 和 `this.state` 的变化并返回一下类型之一：
+
+*   原生的 DOM，如 div
+*   React 组件
+*   数组或 Fragment
+*   Portals（传送门）
+*   字符串或数字，被渲染成文本节点
+*   布尔值或 null，不会渲染任何东西
+
+### componentDidMount
+
+在组件挂载之后立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。这个方法比较适合添加订阅的地方，如果添加了订阅，请记得在卸载的时候取消订阅。
+
+你可以在 componentDidMount 里面直接调用 setState，它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前，如此保证了即使 render 了两次，用户也不会看到中间状态。
+
+## 更新阶段
+
+更新阶段是指当组件的 props 发生了改变，或者组件内部调用了 setState 或者发生了 forceUpdate，这个阶段的过程包括：
+
+*   UNSAFE_componentWillReceiveProps
+*   getDerivedStateFromProps
+*   sholdComponentUpdate
+*   UNSAFE_componentWIllUpdate
+*   render
+*   getSnapshotBeforeUpdate
+*   (React Updates DOM and refs)
+*   componentDidUpdate
+
+### shouldComponentUpdate
+
+它有两个参数，根据此函数的返回值来判断是否重新进行渲染，首次渲染或者是当我们调用了 forceUpdate 时并不会触发此方法，此方法仅用于性能优化。
+
+但是官方提倡我们使用内置的 PureComponent 而不是自己编写 shouldComponentUpdate。
+
+### getSnapshotBeforeUpdate
+
+这个生命周期函数发生在 render 之后，在更新之前，给了一个机会去获取 DOM 信息，计算得到并返回一个 snapshot，这个 snapshot 会作为 componentDidUpdate 第三个参数传入。
+
+### componentDidUpdate
+
+这个函数会在更新后被立即调用，首次渲染不会执行此方法。在这个函数中我们可以操作 DOM，可以发起请求，还可以 setState，但注意一定要用条件语句，否则会导致无限循环。
+
+## 卸载阶段
+
+### componentWillUnmount
+
+这个生命周期函数会在组件卸载销毁之前被调用，我们可以在这里执行一些清除操作。不要在这里调用 setState，因为组件不会重新渲染。
 
 
 

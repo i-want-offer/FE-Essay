@@ -32,6 +32,19 @@ Event Loop 包含了一系列阶段（phase），每个阶段都是只执行属�
 5.  **check（检测）**
 6.  close callbacks（关闭回调）
 
+执行顺序是：
+
+1.  输入数据阶段（incoming data）
+2.  轮询阶段（poll）
+3.  检查阶段（check）
+4.  关闭事件回调阶段（close callbacks）
+5.  定时器检测阶段（timer）
+6.  I / O 事件回调阶段（I / O callbacks）
+7.  闲置阶段（idle，prepare）
+8.  轮询阶段
+
+
+
 ### timer
 
 当你使用 `setTimeout` 和 `setInterval` 的时候，传入的回调函数就是在这个阶段执行。

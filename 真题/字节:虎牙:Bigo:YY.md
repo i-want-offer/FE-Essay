@@ -235,3 +235,143 @@ webpack 在打包构建的全过程中都会暴露一些生命周期函数，plu
 ## 四面
 
 聊人生
+
+
+
+# Bigo
+
+## 一面
+
+### 可逆矩阵求法
+
+### 三元一次方程
+
+克拉默法则
+
+matrix.js
+
+### 尽可能少的空间做矩阵转置
+
+[矩阵转置](https://leetcode-cn.com/problems/transpose-matrix/)
+
+### 欧拉角和旋转矩阵
+
+### 洗牌算法
+
+### 算法
+
+假设有偶数位的整数，将整数分开两边，然后对每边的每个数组的每一位求总和，当两边的总和相对就认为这组数符合要求，求2n位数的符合要求数占总数的多少
+
+例子：287962 可以分成 287 962，其中 2 + 8 + 7 = 9 + 6 + 2，那么他就是符合要求的。
+
+## 二面
+
+### 浏览器缓存策略
+
+### 跨域处理
+
+### https 握手
+
+### http2 特性
+
+### tcp 三次握手
+
+### 从 url 到页面显示
+
+### redux 和 mobx 差异
+
+### tree-shaking
+
+### 性能优化
+
+### css 的 bem 规范
+
+### 当场设计一个 toast
+
+### lru 实现
+
+### dns 的路径选择用了啥算法
+
+
+
+# YY
+
+## 一面
+
+### MVVM 和 MVC 的区别
+
+### MVVM 的实现
+
+### fiber
+
+### hook
+
+### 为何 react 点击事件放在 setTimeout 会拿不到 event 对象
+
+react 点击事件合成
+
+### setState 是同步还是异步
+
+-   本质上都是同步，只不过改变 state 的时机不同
+-   由一个是是否批量更新变量来决定
+-   放在 setTimeout 就能实时改变
+
+### node 的 流
+
+### koa 和 express 区别
+
+-   express 是大而全有路由等，koa2 小而精通过中间件
+-   koa2 能使用 async await，express 不能
+-   koa2 有洋葱模型和 ctx 上下文，express 没有
+
+### 洋葱模型
+
+### 实现一个函数 compose([fn1,fn2,fn3..]) 转成 fn3(fn2(fn1()))
+
+这个本质上就是中间件实现逻辑
+
+### koa2 和 egg 区别
+
+*   egg 是在 koa2 上的封装
+
+-   egg 有 controller，service，router
+-   约定了文件目录结构
+
+### 鉴权
+
+-   Seesion/cookie
+-   Token
+-   OAuth
+-   SSO
+-   还好项目都涉及过，虽然不是我用node写的，是后端写的，但是那时候好奇问了一下，并且查了一些资料，勉强答出来
+
+## 二面
+
+### 浏览器缓存策略
+
+### 跨域处理
+
+### https 握手
+
+### xss 和 csrf 攻击
+
+### ts 接口 枚举 泛型
+
+### webpack 优化
+
+### tree-shaking
+
+### HMR 实现原理
+
+### nginx
+
+*   跨域配置/转发
+*   缓存策略配置
+*   地址重定向配置
+
+### 场景题，做一个页面下雪
+
+-   写一个粒子 Class，里面有粒子、大小、图片，每秒移动的距离
+-   一个粒子控制器 Class，包含粒子数量、分布情况，粒子的下落速度
+-   用 requestanimationframe 绘画动画
+-   用 css3 开启硬件 GPU 加速

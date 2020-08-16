@@ -79,7 +79,7 @@ useEffect 的保存方式和 useState / useReducer 类似，也是以链表的�
 
 ### 执行阶段
 
-在每次组件渲染完成后，就会进入 useEf4fect 的执行阶段 `function commitHookEffectList()`
+在每次组件渲染完成后，就会进入 useEffect 的执行阶段 `function commitHookEffectList()`
 
 1.  遍历链表
 2.  如果遇到 `Effect.tag` 被标记上 `NoHookEffect` 的节点则跳过

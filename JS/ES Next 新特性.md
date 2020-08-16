@@ -97,7 +97,7 @@
 
 # es11（es2020）
 
-*   可选调用连
+*   可选调用链
 *   空值合并
 *   Promise.allSettled
 *   String.prototype.matchAll

@@ -31,7 +31,7 @@ function dfs(oldNode, newNode, index, patchs) {
       
       // 递归进入下一层级比较
       diffChildren(oldNode.children, newNode.children, index, patchs)
-    }else {
+    } else {
       curPatchs.push({type: 'replaceNode', node:newNode})
     }
   }

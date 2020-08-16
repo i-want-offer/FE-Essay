@@ -24,3 +24,4 @@ worker.onmessage = function(event) {
 *   同源限制
 *   无法使用 document、window、alert、confirm
 *   无法加载本地资源
+

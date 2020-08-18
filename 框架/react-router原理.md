@@ -82,12 +82,8 @@ function ConPage() {
   return (
     <div>
       <div onClick={_changePage} className='btnTest'> 切换路由</div>
-      {Page=='rank' &&
-        <RankPage />
-      }
-      {Page=='map' &&
-      <MapPage />
-    }
+      {Page=='rank' && <RankPage />}
+      {Page=='map' && <MapPage />}
     </div>
   )
 }

@@ -8,9 +8,9 @@
 
 *   [动态规划](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md)
 *   [贪心](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.md)
-*   二分法
-*   回溯
-*   排序
+*   [二分法](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%B3%95.md)
+*   [回溯](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.md)
+*   [排序](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.md)
 *   并查集
 *   拓扑排序
 *   位运算

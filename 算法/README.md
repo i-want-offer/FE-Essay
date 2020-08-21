@@ -14,7 +14,7 @@
 *   并查集
 *   拓扑排序
 *   位运算
-*   双指针
+*   [双指针](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%B3%95.md)
 *   矩阵
 *   二叉树
 *   哈希表

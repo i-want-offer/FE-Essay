@@ -5,7 +5,8 @@ var someObj = {};
 var newObj = JSON.parse(JSON.stringify(someObj));
 ```
 
-### 白领版
+## 白领版
+
 ```javascript
 function deepClone(data) {
   if (typeof data === "object") {

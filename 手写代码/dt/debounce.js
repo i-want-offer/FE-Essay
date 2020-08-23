@@ -12,7 +12,10 @@ function debounce(fn, delay, immediate) {
       timer = setTimeout(function () {
         timer = null;
       }, delay);
-      if (callNow) result = fn.apply(context, args);
+      if (callNow) {
+        result = fn.apply(context, args);
+        return result
+      }
     } else {
       timer = setTimeout(function () {
         fn.apply(context, args);

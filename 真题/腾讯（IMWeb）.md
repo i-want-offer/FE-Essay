@@ -20,7 +20,11 @@
 
 我说了寄生组合继承
 
-中间他问了为什么需要把子函数的constructor 修改回本身，我没答出来。
+[手写寄生组合继承](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/extends/README.md)
+
+中间他问了为什么需要把子函数的constructor 修改回本身：
+
+原因在于使用 Object.create 修改子类的原型的 `__proto__ `，从而导致子类的构造函数变更为父类的构造函数，这样会导致 instanceof 判断错误。
 
 ## 实现正则表达式
 
@@ -58,7 +62,11 @@ const reg = /((\w\.)+(qq.com)$)|^(qq.com)$/
 
 ### 危险网站 B 如何拿到受信任网站 A 的 cookie
 
+危险网站B 无法拿到网站 A 的cookie，它是直接在网站B中向A的目标服务器发送get请求
+
 ### 危险网站 B 利用哪种 API 受信任网站 A 发送请求
+
+xhr
 
 ## 项目经历中有写 SSR，说一下你是怎么实现的
 
@@ -67,6 +75,8 @@ Next.js
 ### 如何保证同构的模块不会挂掉，例如在服务端访问 document
 
 没有做过
+
+据了解，这种写法应该禁止
 
 ## ts问题
 
@@ -114,4 +124,8 @@ git + lerna
 storybook
 
 ## 假如现在是下午 5 点 35 分，时针和分针的夹角是多少
+
+时钟每一大格是 30 度，每一小格是 6 度
+
+时针每过一分钟移动 0.5 度
 

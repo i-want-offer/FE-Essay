@@ -23,3 +23,34 @@ function deepClone(data) {
   }
 }
 ```
+
+## 精英版
+
+```typescript
+function deepClone<T>(data: T): T {
+  const isObj = (v: any): boolean => Object.prototype.toString.call(v).slice(8, -1) === 'Object'
+  
+  function _deepClone(val: any) {
+    if(Array.isArray(val)) {
+      const source = val as any[]
+      return source.reduce((res, item) => {
+        res.push(_deepClone(item))
+        return res
+      }, [])
+    }
+    
+    if(isObj(val)) {
+      const source = val as object
+      return Object.keys(val).reduce((res, key) => {
+        res[key] = _deepClone(source[key])
+        return res
+      }, {})
+    }
+    
+    return val
+  }
+  
+  return _deepClone(data) as T
+}
+```
+

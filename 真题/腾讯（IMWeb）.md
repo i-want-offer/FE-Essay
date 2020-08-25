@@ -101,7 +101,17 @@ type A = {
 
 实现一个工具函数 `GetOnlyFnProps<T>` ，提取泛型类型 T 中字段值是函数的类型。
 
-这题不会。
+```typescript
+type GetOnlyFnKeys<T extends object> = {
+  [K in keyof T]: T[K] extends Function ? K : never
+}[keyof T]
+
+type GetOnlyFnProps<T extends object> = {
+  [K in GetOnlyFnKeys<T>]: T[K]
+}
+```
+
+
 
 ## 你有维护组件库，说一下如何管理组件
 

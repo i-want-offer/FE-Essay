@@ -224,6 +224,20 @@
       return res
     }
     ```
+    
+    ```js
+    // damon
+    function _26convertTo10(str) {
+        let num = 0;
+        for (let i = str.length - 1, j = 1; i >= 0; i--, j *= 26) {
+            const s = str[i].toUpperCase();
+            num += (s.charCodeAt() - 64) * j;
+        }
+
+        return num;
+    }
+    ```
+    
 
 2.  判断两个对象是否相等，就是实现lodash的 isEqual
 

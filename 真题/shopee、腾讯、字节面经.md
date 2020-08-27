@@ -211,34 +211,21 @@
 1.  进制转换问题，输入AA，输出 27, 输入 AZ 输出 52，A -Z分别代表，1 - 26。
 
     ```js
-    function echo(str) {
-      var n = str.length
-      
-      var res = -27
-      for(var i = 0; i < n; i++) {
-        var charCode = str.charCodeAt(i) - 64
-        if(charCode < 1 || charCode > 26) throw Error('字母不是A-Z')
-        res += charCode + 26
-      }
-      
-      return res
-    }
-    ```
-    
-    ```js
     // damon
     function _26convertTo10(str) {
+      	const n = str.length
+        if(!n) return 0
+      
         let num = 0;
-        for (let i = str.length - 1, j = 1; i >= 0; i--, j *= 26) {
+        for (let i = n - 1, j = 1; i >= 0; i--, j *= 26) {
             const s = str[i].toUpperCase();
             num += (s.charCodeAt() - 64) * j;
         }
-
+    
         return num;
     }
     ```
     
-
 2.  判断两个对象是否相等，就是实现lodash的 isEqual
 
 3.  大数加法，输入两个超过js最大数2^53 - 1范围的数，进行加法运算，如：输入：'999', '9999'，输出：'10998'

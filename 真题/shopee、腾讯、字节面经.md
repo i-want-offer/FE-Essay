@@ -231,36 +231,52 @@
 3.  大数加法，输入两个超过js最大数2^53 - 1范围的数，进行加法运算，如：输入：'999', '9999'，输出：'10998'
 
     ```typescript
-    function addStrings(num1: string, num2: string) {
-        const length = Math.abs(num1.length - num2.length)
-        const stringFill0 = new Array(length).fill(0).join('')
-        if (num1.length > num2.length) {
-            num2 = stringFill0 + num2
-        } else {
-            num1 = stringFill0 + num1
-        }
-        let answer = ''
-        let flag = 0
-        for (let i = num1.length - 1; i >= 0; i--) {
-            let target = parseInt(num1[i]) + parseInt(num2[i]) + flag
-            if (target >= 10) {
-                target = target % 10
-                flag = 1
-            } else {
-                flag = 0
-            }
-            answer = target + answer
-        }
-        if (flag) {
-            answer = 1 + answer
-        }
-        return answer
+    function addBigInt(str1: string, str2: string, isInt = true): string {
+      const diff = str1.length - str2.length;
+
+      if (diff >= 0) {
+        str2 = isInt ? '0'.repeat(diff) + str2 : str2 + '0'.repeat(diff);
+      } else {
+        str1 = isInt ? '0'.repeat(-diff) + str1 : str1 + '0'.repeat(-diff);
+      }
+
+      let carry = 0;
+      let res = '';
+
+      for (let index = str1.length - 1; index >= 0; index--) {
+        const s1 = str1[index];
+        const s2 = str2[index];
+
+        const num = +s1 + +s2 + carry;
+        const ans = num % 10;
+
+        res = `${ans}${res}`;
+
+        carry = num >= 10 ? 1 : 0;
+      }
+
+      return `${carry || ''}${res}`;
     }
     ```
 
 4.  大数加法带小数点，输入：'999.99' ， '9999.999'
 
     >   思路一样，拆成整数部分和小数部分
+    ```typescript
+    function FloatAdd(str1: string, str2: string): string {
+      const [int1, decimal1 = '0'] = str1.split('.');
+      const [int2, decimal2 = '0'] = str2.split('.');
+
+      const sumInt = addBigInt(int1, int2);
+      const sumDecimal = addBigInt(decimal1, decimal2, false);
+
+      if (sumDecimal.length > Math.max(decimal1.length, decimal2.length)) {
+        return addBigInt(sumInt, '1') + '.' + sumDecimal.slice(1);
+      } else {
+        return sumInt + '.' + sumDecimal;
+      }
+    }
+    ```
 
 5.  矩阵的最小路径和，这道题用到动态规划，没做过几乎想不到。所以我用了深搜，时间复杂度太高会超时，不过也算过了。[leetcode地址](https://leetcode-cn.com/problems/minimum-path-sum/)
 

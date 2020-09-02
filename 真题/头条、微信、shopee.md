@@ -6,7 +6,7 @@
 
 2.  `position: sticky` 用过吗
 
-3.  typeof 远离，与 instanceof、`Object.prototype.toString.call` 的区别
+3.  typeof 原理，与 instanceof、`Object.prototype.toString.call` 的区别
 
     ![img](https://user-gold-cdn.xitu.io/2020/3/18/170e940c691b9396?imageslim)
 

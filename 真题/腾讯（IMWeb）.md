@@ -111,8 +111,6 @@ type GetOnlyFnProps<T extends object> = {
 }
 ```
 
-
-
 ## 你有维护组件库，说一下如何管理组件
 
 git + lerna

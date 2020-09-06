@@ -120,7 +120,7 @@ Virtual DOM 需要一个解释器，在编译时，根本无法确定编译器�
 
 ## Ivy 和 Incremental DOM
 
-Angular 一直在使用 HTML 和 Template，这也是 Virtual DOM 为被 Angular 接受的原因。
+Angular 一直在使用 HTML 和 Template，这也是 Incremental DOM 为被 Angular 接受的原因。
 
 鉴于此，加上 Incremental DOM 的低内存开销和 Tree Shakable，我认为使用 Incremental DOM 作为渲染引擎是正确的选择。
 

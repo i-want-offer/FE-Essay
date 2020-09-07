@@ -14,11 +14,11 @@
 
 ## ts 的编译原理
 
-## 实现一个 ts 工具函数
+## 实现一个 ts 工具函数，获取 Promise 中的泛型
 
 ```typescript
 type A = Promise<string>
-type B = UnPromise<A> // string
+type UnGenericPromise<T extends Promise<any>> = T extends Promise<infer U> ? U : never
 ```
 
 实现一个工具函数，用来提取 promise 的范型类型

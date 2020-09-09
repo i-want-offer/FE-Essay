@@ -60,7 +60,10 @@ class Promise {
         `${typeof promises} is not iterable (cannot read property Symbol(Symbol.iterator))`
       );
     return new Promise(function (resolve, reject) {
-      if (!promises.length) return;
+      if (!promises.length) {
+        resolve();
+        return;
+      }
       for (const promise of promises) {
         Promise.resolve(promise).then(
           function (value) {

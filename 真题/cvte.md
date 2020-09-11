@@ -21,7 +21,7 @@ type A = Promise<string>
 type UnGenericPromise<T extends Promise<any>> = T extends Promise<infer U> ? U : never
 ```
 
-实现一个工具函数，用来提取 promise 的范型类型
+实现一个工具函数，用来提取 promise 的泛型类型
 
 ## React 中性能优化的做法
 

@@ -57,7 +57,7 @@ function App({name}) {
 *   渲染列表时使用 key
 *   使用 useCallback 和 useMemo 缓存函数和变量
 
-有开发者显示告诉 React 哪些组件不需要重复计算、可以复用。
+由开发者显示告诉 React 哪些组件不需要重复计算、可以复用。
 
 ## 理解 *响应自然*
 
@@ -193,9 +193,9 @@ React16架构可以分为三层：
 
 ## Scheduler（调度器）
 
-既然我们一浏览器是否有剩余时间作为任务中断的标准，那么我们需要一种机制，当浏览器有剩余时间是通知我们。
+既然我们以浏览器是否有剩余时间作为任务中断的标准，那么我们需要一种机制，当浏览器有剩余时间是通知我们。
 
-其实部分浏览器已经实现了这个 API，这就是 [requestIdleCallback](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback)。但由于以下因素，React 放弃使用：
+其实部分浏览器已经实现了这个 API，这就是 [requestIdleCallback](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback) 。但由于以下因素，React 放弃使用：
 
 *   浏览器兼容性
 *   触发频率不稳定，受很多因素影响。比如当我们浏览器切换 tab 后，之前 tab 注册的 requestIdleCallback 出发的频率会变得很低
@@ -252,7 +252,7 @@ Renderer 根据 Reconciler 为虚拟DOM打的标记，同步执行对应的 DOM 
 
 由于红框中的工作都在内存中进行，不会更新页面上的 DOM，所以即使反复中断，用户也不会看见更新不完全的 DOM。
 
->   事实上，由于 **Scheduler** 和 **Reconciler** 都是平台无关的，所以 React 为他们单独发了一个包 [react-Reconciler](https://www.npmjs.com/package/react-reconciler)。你可以用这个包自己实现一个 ReactDOM，具体见 **参考资料**。
+>   事实上，由于 **Scheduler** 和 **Reconciler** 都是平台无关的，所以 React 为他们单独发了一个包 [react-reconciler](https://www.npmjs.com/package/react-reconciler) 。你可以用这个包自己实现一个 ReactDOM。
 
 
 
@@ -260,7 +260,7 @@ Renderer 根据 Reconciler 为虚拟DOM打的标记，同步执行对应的 DOM 
 
 ## 心智模型
 
-React 核心团队成员 [Sebastian Markbåge](https://github.com/sebmarkbage/)（React Hooks 的发明者）曾说过：“我们在 React 中做的就是践行 **代数效应（Algebraic Effects）**。”
+React 核心团队成员 [Sebastian Markbåge](https://github.com/sebmarkbage/) （React Hooks 的发明者）曾说过：“我们在 React 中做的就是践行 **代数效应（Algebraic Effects）**。”
 
 那么，什么是代数效应？它和 React 有什么关系呢？
 
@@ -431,7 +431,7 @@ Fiber 的含义包含三层：
 
 ### Fiber 的结构
 
-我们可以从这里看到 [Fiber节点的属性定义](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117)。虽然属性很多，但我们可以按三层含义将他们分类来看：
+我们可以从这里看到 [Fiber节点的属性定义](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117) 。虽然属性很多，但我们可以按三层含义将他们分类来看：
 
 ```js
 function FiberNode(
@@ -494,7 +494,7 @@ this.sibling = null;
 
 举个例子，如下的组件结构：
 
-```js
+```jsx
 function App() {
   return (
     <div>

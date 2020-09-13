@@ -21,7 +21,7 @@
 
 变更检测的基本任务是 **获取程序内部状态并使之在用户界面可见**。这个 **状态** 可以是任何对象、数组、基本数据类型，也就是说可以是任意 JavaScript 数据结构。
 
-这个 **状态** 在用户界面上最终可能成为段落、表哥、链接或者按钮，并且特别对于 web 而言，会成为 DOM。所以基本上我们将数据结构作为输入，并生成 DOM 作为输出并展示给用户。我们把这一过程称之为 **rendering（渲染）**。
+这个 **状态** 在用户界面上最终可能成为段落、表格、链接或者按钮，并且特别对于 web 而言，会成为 DOM。所以基本上我们将数据结构作为输入，并生成 DOM 作为输出并展示给用户。我们把这一过程称之为 **rendering（渲染）**。
 
 ![img](https://user-gold-cdn.xitu.io/2017/10/17/8149181683996a0bd363a91d92844c43?imageslim)
 
@@ -94,7 +94,7 @@ class ContactsApp implements OnInit{
 
 到目前为止，我们已经知道了是什么导致程序状态的改变，但在这个视图必须发生改变的时候，到底是谁通知 Angular？
 
-如果有接触过 Angular 的应该知道这一切是 [Zones](https://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html) 完成的。事实上，Angular 有着自己的 zone，叫 **NgZone**。[Zones in Angular](https://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html) 是一篇关于 NgZone 的文章。
+如果有接触过 Angular 的应该知道这一切是 [Zone.js](https://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html) 完成的。事实上，Angular 有着自己的 zone，叫 **NgZone**。[Zone.js in Angular](https://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html) 是一篇关于 NgZone 的文章。
 
 简单描述一下：Angular 源码中某一个东西叫做 ApplicationRef，它监听 NgZone 的 onTurnDone 事件。只要这个事件发生，它就执行 `tick()` 函数，这个函数执行 **变更检查**。
 
@@ -125,7 +125,7 @@ class ApplicationRef {
 
 这是很明显的，因为这让我们可以单独控制每个组件的变更检查何时发生以及如何执行。
 
-我们假设组件书的某处发生了一个事件，此时由 zone 执行给定的 handler 并且在执行完成后通知 Angular，接着 Angular 执行变更检查。
+我们假设组件树某处发生了一个事件，此时由 zone 执行给定的 handler 并且在执行完成后通知 Angular，接着 Angular 执行变更检查。
 
 ![img](https://user-gold-cdn.xitu.io/2017/10/17/dd7592c43121bd5df44f9c4ae1973388?imageslim)
 
@@ -256,11 +256,15 @@ Angular 考虑到了这一点，如前文所述，变更总是自顶向下，那
 我们可以通过依赖注入一个组件的 ChangeDetectorRef，通过它的一个 maskForCheck API，标记了一条当前组件到根组件的路径，当下一次变更检测发生的时候，就会检测到它们，Angular 就知道从这个组件到根组件这一路径上的组件都需要被检查：
 
 ```typescript
-ngOnInit() {
-    this.addItemStream.subscribe(() => {
-      this.counter++; // application state changed
-      this.cd.markForCheck(); // marks path
-    })
+class AppComponent {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {
+      this.addItemStream.subscribe(() => {
+        this.counter++; // application state changed
+        this.cd.markForCheck(); // marks path
+      })
+    }
   }
 }
 ```

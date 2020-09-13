@@ -18,13 +18,13 @@
 
 ### 技术规范
 
-Web Worker 属于 HTML 规范，规范文档见  [Web Workers Working Draft](https://www.w3.org/TR/workers/)，2009 年就提出了草案。
+Web Worker 属于 HTML 规范，规范文档见  [Web Workers Working Draft](https://www.w3.org/TR/workers/) ，2009 年就提出了草案。
 
 目前，除了 ie10 以下，主流浏览器都已经得到了兼容。
 
 ### DediactedWorker 和 SharedWorker
 
-Web Worker 规范中包括：[DedicatedWorker](https://developer.mozilla.org/en-US/docs/Web/API/Worker) 和 [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)。
+Web Worker 规范中包括：[DedicatedWorker](https://developer.mozilla.org/en-US/docs/Web/API/Worker) 和 [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker) 。
 
 ![img](https://user-gold-cdn.xitu.io/2020/7/21/1736f7108907aefd?w=572&h=270&f=png&s=32097)
 
@@ -335,7 +335,7 @@ Surma 兼顾低性能机型上 postMessage 容易造成主线程卡顿，提出�
 *   在客户端运行 CoffeeScript，Less，CJS / AMD 等模块编译和依赖管理（用于开发目的）
 *   后台服务钩子
 *   自定义模版用于特定 URL 模式
-*   性能增强，比如鱼去用户可能需要的资源，比如相册中后面数张照片
+*   性能增强，比如预取用户可能需要的资源，比如相册中后面数张照片
 
 ## 局限性
 

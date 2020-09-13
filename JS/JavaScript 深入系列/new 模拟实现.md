@@ -83,7 +83,7 @@ function objectFactory() {
 
 ```js
 function objectFactory(Fn, ...args) {
-	const obj = Object.create(Fn.prototype)
+  const obj = Object.create(Fn.prototype)
   const result = Fn.apply(obj, args)
 	
   return result && typeof result === 'object' ? result : obj

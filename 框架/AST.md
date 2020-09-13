@@ -9,14 +9,14 @@ function square(n) {
 }
 
 // 转换后
-{
+const element = {
   type: "FunctionDeclaration",
-	start: 0,
+  start: 0,
   end: 35,
-  id: Identifier
+  id: Identifier,
   expression: false,
   generator: false,
-  params: [1 element]
+  params: [1, element],
   body: BlockStatement
 }
 ```

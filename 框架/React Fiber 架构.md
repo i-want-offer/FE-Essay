@@ -23,7 +23,7 @@ React 是如何实现这两点的呢？
 
 ```vue
 <template>
-	<ul>
+  <ul>
     <li>0</li>
     <li>{{name}}</li>
     <li>2</li>
@@ -61,7 +61,7 @@ function App({name}) {
 
 ## 理解 *响应自然*
 
-该如何理解 *响应自然*？React给出的答案是 [将人机交互研究的结果整合到真实的 UI 中](https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html#putting-research-into-production)。
+该如何理解 *响应自然*？React给出的答案是 [将人机交互研究的结果整合到真实的 UI 中](https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html#putting-research-into-production) 。
 
 设想以下场景：
 
@@ -73,7 +73,7 @@ function App({name}) {
 
 但这只是治标不治本，只要组件更新操作是同步的，那么当更新开始到渲染完毕前，组件中总会有一定数量的工作占用线程，浏览器没有空闲时间绘制 UI，造成卡顿。
 
->   React核心团队成员Dan在介绍React为什么会异步（[Concurrent Mode](https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html)）更新组件时说： 
+>   React核心团队成员Dan在介绍React为什么会异步（[Concurrent Mode](https://zh-hans.reactjs.org/docs/concurrent-mode-intro.html )）更新组件时说： 
 >
 >   ![Dan关于用户体验的思考](https://react.iamkasong.com/img/update.png)
 

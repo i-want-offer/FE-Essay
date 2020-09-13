@@ -40,25 +40,27 @@ Graphql 另一个令人称赞的地方就是，它可以合并多个请求。如
 而在 Graphql 中，我们可以这样做达到合并请求：
 
 ```js
-query TEAM_USERS {
-  team(id: $teamID) {
-    users {
-      edges {
-        node {
-          avatarURL
-          displayName
-          teams {
-            edges {
-              node {
-                displayName
+const query = `
+  query TEAM_USERS {
+    team(id: $teamID) {
+      users {
+        edges {
+          node {
+            avatarURL
+            displayName
+            teams {
+              edges {
+                node {
+                  displayName
+                }
               }
             }
           }
-        }
-      } 
+        } 
+      }
     }
   }
-}
+`
 ```
 
 如此一来可以提高性能，在单个请求中完成，而不是递归调用三个不同的查询，从而降低前端应用程序中的代码复杂度。
@@ -70,19 +72,21 @@ Graphql 的最后一个优势是订阅 -- 进行查询或变动并自动获取�
 假设我们要使用 GraphQL 创建聊天应用，我们可能会执行以下的操作：
 
 ```js
-subscription MESSAGES() {
-  messagesSubscribe(last: 200) {
-    edges {
-      node {
-        text
-        author {
-          avatarURL
-          userName
+const subscription = `
+  subscription MESSAGES() {
+    messagesSubscribe(last: 200) {
+      edges {
+        node {
+          text
+          author {
+            avatarURL
+            userName
+          }
         }
       }
     }
   }
-}
+`
 ```
 
 在我们的应用中，`messagesSubscribe.edges` 是一系列的消息，每次我们发送消息都会自动更新。否则我们必须很频繁发送请求，从而在短时间内产生数百个调用

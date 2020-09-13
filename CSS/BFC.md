@@ -2,7 +2,7 @@
 
 >   BFC：Block Formatting Context（块级格式化上下文）
 >
->   再解释什么什么是 BFC 之前，我们需要先知道 Box、Formatting Context 的概念
+>   在解释什么什么是 BFC 之前，我们需要先知道 Box、Formatting Context 的概念
 
 ## Box：CSS 布局的基本单位
 

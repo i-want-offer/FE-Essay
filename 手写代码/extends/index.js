@@ -18,5 +18,5 @@ function Child(name, parentName) {
   };
 }
 
-Child.prototype = Object.create(Parent.prototype);
+Child.prototype = Object.create(Parent.prototype); // 通过这一步砍掉了实例属性
 Child.prototype.constructor = Child;

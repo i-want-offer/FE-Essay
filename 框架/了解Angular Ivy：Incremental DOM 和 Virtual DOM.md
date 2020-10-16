@@ -90,7 +90,7 @@ var TodosComponent = /** @class */ (function () {
 
 ### Tree Shakable
 
-当我们使用 Incremental DOM 时，框架不会编译组件，而是组件引用指令。如果组件为使用特定指令，它就永远不会被使用。
+当我们使用 Incremental DOM 时，框架不会编译组件，而是组件引用指令。如果组件未使用特定指令，它就永远不会被使用。
 
 因此，我们可以省略掉 bundle 中未使用的指令。
 

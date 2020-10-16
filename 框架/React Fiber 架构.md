@@ -57,7 +57,7 @@ function App({name}) {
 *   渲染列表时使用 key
 *   使用 useCallback 和 useMemo 缓存函数和变量
 
-由开发者显示告诉 React 哪些组件不需要重复计算、可以复用。
+由开发者显式告诉 React 哪些组件不需要重复计算、可以复用。
 
 ## 理解 *响应自然*
 

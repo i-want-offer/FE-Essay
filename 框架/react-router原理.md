@@ -44,15 +44,15 @@ window.addEventListener('popstate', function (event) {
 ```jsx
 import React, { useEffect, useState, useRef, Component } from 'react';
 
-const MapPage=()=>{
+const MapPage = () => {
   return <div>MapPage</div>
 }
-const RankPage=()=>{
+const RankPage = () => {
   return <div>RankPage</div>
 }
 
 function ConPage() {
-  const[ Page, setPage ] = useState('rank');
+  const [ Page, setPage ] = useState('rank');
 
   useEffect(() => {
     window.addEventListener('popstate', (event) => {

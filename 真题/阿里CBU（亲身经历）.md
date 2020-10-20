@@ -126,9 +126,9 @@ function flatten(data) {
       if(data[i] === null || data[i] === undefined) continue
       var k 
       if(Array.isArray(data)) {
-        k = key? `${key}[${i}]` : i
+        k = key ? `${key}[${i}]` : i
       } else {
-        k = key? `${key}.${i}` : i
+        k = key ? `${key}.${i}` : i
       }
       if(typeof data[i] === 'object') {
 				helper(data[i], k)

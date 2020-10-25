@@ -51,7 +51,7 @@ WWWDC 对 IOS 的建议：直接使用 `0.5px` 边框
 .scale-1px::after {
   content: ' ';
   width: 100%;
-  height: `px; /* no */
+  height: 1px; /* no */
   background: #e5e5e5;
   position: absolute;
   left: 0;

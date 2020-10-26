@@ -69,6 +69,69 @@ console.log('script end');
 
 ### 最近有学习哪些前端的新技术吗
 
+## 二面
+
+### 自我介绍
+
+### 离职原因
+
+### 你希望加入一个什么样的团队
+
+### 能说说迁移 ts 的背景吗
+
+### 算法题
+
+![](https://raw.githubusercontent.com/LaamGinghong/pics/master/img/20201026085941.png)
+
+```js
+function addSerial(arr) {
+    var hashMap = {}
+    arr.forEach((item, index)=>{
+        hashMap[item] = hashMap[item] || {
+            length: 0,
+            nums: [],
+            index
+        }
+        hashMap[item].length++
+        hashMap[item].nums.push(hashMap[item].length)
+    })
+    var result = arr.map(item=>{
+        var num = hashMap[item].nums.shift()
+        return `${item}${num}`
+    })
+    for(const i in hashMap) {
+        if(hashMap.hasOwnProperty(i)) {
+            if(hashMap[i].length === 1) {
+                const index = hashMap[i].index
+                result[index] = arr[index]
+            }
+        }
+    }
+    return result
+}
+```
+
+### 你实现的这个算法的时间复杂度和空间复杂度分别是多少
+
+### 输出题
+
+![](https://raw.githubusercontent.com/LaamGinghong/pics/master/img/20201026090040.png)
+
+```js
+// 'window'
+// 'window'
+// '1-1'
+// '1-2'
+// 'window'
+// '1-2'
+```
+
+### 你觉得这题在考察什么
+
+### 分别说说为什么是这些输出
+
+### 能说说你在团队中推动的事情吗
+
 
 
 

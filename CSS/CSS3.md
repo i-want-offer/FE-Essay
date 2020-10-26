@@ -163,13 +163,13 @@ background-origin 用来指定 background-position 的相对位置
 
 ## 换行
 
-`work-break: normal | break-all | keep-all`
+`word-break: normal | break-all | keep-all`
 
 *   normal：默认规则，只在单词间隔处换行；
 *   keep-all：只在半角空格或连接线处换行；
 *   break-all：允许单词内换行。
 
-`work-wrap: normal | break-word`
+`word-wrap: normal | break-word`
 
 *   break-word：允许常单词或者 URL 换行；
 *   normal：默认规则，只在断子点换行。

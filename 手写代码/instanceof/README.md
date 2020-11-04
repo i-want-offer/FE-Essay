@@ -13,3 +13,19 @@ function _instanceof(left, right) {
   }
 }
 ```
+
+## ES6版本
+
+```typescript
+function Instanceof(left: object, right: Function): boolean {
+  let proto = Reflect.getPrototypeOf(left)
+  const prototype = right.prototype
+  
+  while(true) {
+    if (proto === null) return false;
+    if (proto === prototype) return true;
+   	proto = Reflect.getPrototypeOf(left)
+  }
+}
+```
+

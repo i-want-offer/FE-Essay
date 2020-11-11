@@ -36,4 +36,6 @@ module.exports = {
     nav: [{text: "GitHub", link: "https://github.com/i-want-offer"}],
     sidebar,
   },
+  dest: path.resolve(__dirname, "../", "../", "dist"),
+  base: "/FE-Essay.github.io/",
 };

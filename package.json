@@ -10,7 +10,9 @@
     "email": "laamginghong1996@qq.com"
   },
   "scripts": {
-    "start": "vuepress dev docs"
+    "start": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "yarn build; cd dist; git init; git add .;git commit -m 'deploy';git remote add origin git@github.com:i-want-offer/FE-Essay.github.io.git;git push --set-upstream origin master -f"
   },
   "license": "MIT",
   "private": true,

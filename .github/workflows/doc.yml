@@ -6,12 +6,26 @@ on:
       - master
 
 jobs:
-  deploy:
-    name: deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
-    uses: actions/checkout
     steps:
-      - run: |
-        git config --global user.email "${{secrets.EMAIL}}"
-        git config --global user.name "${{secrets.USER_NAME}}"
-        yarn build
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: yarn --force && yarn build
+
+      - name: Deploy
+        run: |
+          cd dist
+          git init
+          git add .
+          git commit -m "deploy"
+          git config --global user.email "${{secrets.EMAIL}}"
+          git config --global user.name "${{secrets.USER_NAME}}"
+          git remote add origin git@github.com:i-want-offer/FE-Essay.github.io.git
+          git push --set-upstream origin master -f
+
+

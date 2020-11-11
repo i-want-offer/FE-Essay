@@ -7,7 +7,8 @@ Function.prototype.bind2 = function (obj) {
     return that.apply(context, [...args, ...arguments]);
   };
 
-  function Tmp() {}
+  function Tmp() {
+  }
 
   Tmp.prototype = this.prototype;
   fn.prototype = new Tmp();

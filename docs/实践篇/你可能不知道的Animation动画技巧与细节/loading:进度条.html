@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Loading / 进度条</title>
+    <style>
+        :root {
+            --color: #0079f5;
+        }
+
+        div {
+            color: var(--color);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        div label {
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes loading-active {
+            0% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: -207;
+            }
+        }
+
+        .loading svg {
+            transform: rotate(-150deg);
+        }
+
+        .loading circle {
+            animation: loading-active 1s 0s ease-out infinite;
+        }
+
+        .progress circle {
+            stroke-dasharray: 157 157;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.29, 0.6, 0.42, 0.99);
+        }
+
+        .progress .trail {
+            stroke-dashoffset: 0;
+        }
+
+        .progress span {
+            left: 118px;
+            top: 150px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .progress button {
+            margin-right: 5px;
+            border: 0;
+            color: #fff;
+            padding: 4px 10px;
+            background: var(--color);
+            border-radius: 0.25em;
+            outline: none;
+        }
+
+        .progress button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <label class="loading">
+        Loading：
+        <svg height="100" viewBox="0 0 60 60" with="100">
+            <circle
+                    cx="30"
+                    cy="30"
+                    fill="transparent"
+                    r="25"
+                    stroke="#0079f5"
+                    stroke-dasharray="50 157"
+                    stroke-linecap="round"
+                    stroke-width="4"
+            ></circle>
+        </svg>
+    </label>
+    <label class="progress">
+        进度条：
+        <svg height="100" viewBox="0 0 60 60" with="100">
+            <defs>
+                <linearGradient id="gradient" x1="100%" x2="0%" y1="0%" y2="0%">
+                    <stop offset="0%" stop-color="#0079f5"></stop>
+                    <stop offset="100%" stop-color="#6149f6"></stop>
+                </linearGradient>
+            </defs>
+            <circle
+                    class="trail"
+                    cx="30"
+                    cy="30"
+                    fill="transparent"
+                    r="25"
+                    stroke="#eee"
+                    stroke-width="4"
+            ></circle>
+            <circle
+                    id="progress-bar"
+                    class="path"
+                    cx="30"
+                    cy="30"
+                    fill="transparent"
+                    r="25"
+                    stroke="url(#gradient)"
+                    stroke-width="4"
+                    style="stroke-dashoffset: 141.3"
+            ></circle>
+        </svg>
+        <span id="progress-detail">20%</span>
+        <button onclick="reduce()">减少</button>
+        <button onclick="add()">增加</button>
+    </label>
+</div>
+</body>
+
+<script>
+  const bar = document.getElementById("progress-bar");
+  const detail = document.getElementById("progress-detail");
+  const total = 157; // 圆周长
+  const per = total / 100; //一个百分比进度代表的周长
+  let progress = 20; // 当前百分比进度
+
+  function add() {
+    if (progress >= 100) {
+      return;
+    }
+    progress += 20;
+    update();
+  }
+
+  function reduce() {
+    if (progress <= 0) {
+      return;
+    }
+    progress -= 20;
+    update();
+  }
+
+  function update() {
+    bar.style.strokeDashoffset = total - per * progress;
+    detail.innerHTML = `${progress}%`;
+  }
+</script>
+</html>

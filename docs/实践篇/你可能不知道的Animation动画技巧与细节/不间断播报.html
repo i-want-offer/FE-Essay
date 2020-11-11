@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>不间断播报</title>
+    <style>
+        @keyframes scroll {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(0, -160px);
+            }
+        }
+
+        .container {
+            width: 220px;
+            height: 40px;
+            background: #0066ff;
+            overflow: hidden;
+            border-radius: 2em;
+        }
+
+        .ul {
+            animation-name: scroll;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .li {
+            line-height: 40px;
+            vertical-align: bottom;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ul">
+        <div class="li">小刘同学加入了凹凸实验室</div>
+        <div class="li">小邓同学加入了凹凸实验室</div>
+        <div class="li">小李同学加入了凹凸实验室</div>
+        <div class="li">小王同学加入了凹凸实验室</div>
+        <!--   插入用于填充的数据数据 -->
+        <div class="li">小刘同学加入了凹凸实验室</div>
+    </div>
+</div>
+</body>
+</html>

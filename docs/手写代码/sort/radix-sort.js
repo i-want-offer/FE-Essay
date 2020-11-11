@@ -8,6 +8,7 @@ function radixSort(nums) {
     }
     return sum;
   }
+
   // 第一维表示位数即0-9，第二维表示里面存放的值
   var arr = Array.from(Array(10)).map(() => Array());
   var max = Math.max(...nums);

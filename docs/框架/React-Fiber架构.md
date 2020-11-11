@@ -626,8 +626,8 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 3.  图中右侧已构建完的 workInProgress Fiber 树在 commit 阶段渲染到页面。
 
     此时 DOM 更新为右侧树对应的样子，fiberRootNode 的 current 指针指向 workInProgress Fiber 树使其变为 current Fiber 树。
-
-    ![image-20200912111711207](../../../../Library/Application%20Support/typora-user-images/image-20200912111711207.png)
+    
+    ![](https://raw.githubusercontent.com/LaamGinghong/pics/master/img/20201111170550.png)
 
 ### update 时
 
@@ -641,5 +641,5 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 
 2.  workInProgress Fiber 树在 render 阶段完成构建后进入 commit 阶段渲染到页面上。渲染完毕后，workInProgress Fiber 树变为 current Fiber 树。
 
-    ![image-20200912163912610](../../../../Library/Application%20Support/typora-user-images/image-20200912163912610.png)
+![](https://raw.githubusercontent.com/LaamGinghong/pics/master/img/20201111170620.png)
 

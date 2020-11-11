@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>直播点赞动画</title>
+    <style>
+        @keyframes animation-y {
+            0% {
+                transform: translate(-50%, 100px) scale(0);
+            }
+            50% {
+                transform: translate(-50%, -100px) scale(1.5);
+            }
+            100% {
+                transform: translate(-50%, -300px) scale(1.5);
+            }
+        }
+
+        @keyframes animation-x {
+            0% {
+                margin-left: 0px;
+            }
+            25% {
+                margin-left: 25px;
+            }
+            75% {
+                margin-left: -25px;
+            }
+            100% {
+                margin-left: 0px;
+            }
+        }
+
+        .btn {
+            top: 80%;
+            user-select: none;
+            width: 50px;
+            line-height: 50px;
+            background: #0066ff;
+            color: #fff;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #999;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn:active {
+            opacity: 1;
+        }
+
+        .like {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 25px;
+            height: 23px;
+            pointer-events: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Coraz%C3%B3n.svg/150px-Coraz%C3%B3n.svg.png);
+            animation: animation-x 3s 0s linear infinite, animation-y 4s 0s linear 1;
+        }
+
+        .like.second {
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Coraz%C3%B3n.svg/150px-Coraz%C3%B3n.svg.png);
+            animation: animation-x 3s -2s linear infinite,
+            animation-y 4s 0s linear 1;
+        }
+    </style>
+</head>
+<body>
+<div class="btn" onclick="like()">点赞</div>
+</body>
+<script>
+  var count = 0;
+
+  function like() {
+    var dom = document.createElement("div");
+    count += 1;
+    dom.className = count % 2 ? "like second" : "like";
+    dom.style.willChange = "margin-top";
+    document.body.appendChild(dom);
+    setTimeout(function () {
+      document.body.removeChild(dom);
+    }, 2000);
+  }
+</script>
+</html>

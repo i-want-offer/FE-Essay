@@ -1,4 +1,39 @@
 class Promise {
+  /**
+   * 终值
+   * @type {*}
+   */
+  value = null;
+  /**
+   * 据因
+   * @type {string}
+   */
+  reason;
+  /**
+   * 状态
+   * @type {"pending"|"fulfilled"|"rejected"}
+   */
+  state = "pending";
+  /**
+   * 异步成功回调
+   * @type {Function[]}
+   */
+  onFulfilledCallback = [];
+  /**
+   * 异步失败回调
+   * @type {Function[]}
+   */
+  onRejectedCallback = [];
+
+  constructor(executor) {
+    this.init();
+    try {
+      executor(this.resolve, this.reject);
+    } catch (e) {
+      this.reject(e);
+    }
+  }
+
   static resolve(value) {
     if (value instanceof Promise) return value;
     return new Promise(function (resolve, reject) {
@@ -40,6 +75,7 @@ class Promise {
             resolve(result);
           }
         }
+
         for (let i = 0; i < promises.length; i++) {
           Promise.resolve(promises[i]).then(
             function (value) {
@@ -75,45 +111,6 @@ class Promise {
         );
       }
     });
-  }
-
-  /**
-   * 终值
-   * @type {*}
-   */
-  value = null;
-
-  /**
-   * 据因
-   * @type {string}
-   */
-  reason;
-
-  /**
-   * 状态
-   * @type {"pending"|"fulfilled"|"rejected"}
-   */
-  state = "pending";
-
-  /**
-   * 异步成功回调
-   * @type {Function[]}
-   */
-  onFulfilledCallback = [];
-
-  /**
-   * 异步失败回调
-   * @type {Function[]}
-   */
-  onRejectedCallback = [];
-
-  constructor(executor) {
-    this.init();
-    try {
-      executor(this.resolve, this.reject);
-    } catch (e) {
-      this.reject(e);
-    }
   }
 
   init() {
@@ -156,14 +153,14 @@ class Promise {
       typeof onFulfilled === "function"
         ? onFulfilled
         : function (value) {
-            return value;
-          };
+          return value;
+        };
     onRejected =
       typeof onRejected === "function"
         ? onRejected
         : function (reason) {
-            throw reason;
-          };
+          throw reason;
+        };
 
     return new Promise((resolve, reject) => {
       if (this.state === "fulfilled") {

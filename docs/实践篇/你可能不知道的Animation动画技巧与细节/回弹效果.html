@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>回弹效果</title>
+    <style>
+        @keyframes animate {
+            0% {
+                top: -100%;
+                opacity: 0;
+            }
+            25% {
+                top: 60%;
+                opacity: 1;
+            }
+            50% {
+                top: 48%;
+                opacity: 1;
+            }
+            75% {
+                top: 52%;
+                opacity: 1;
+            }
+            100% {
+                top: 50%;
+                opacity: 1;
+            }
+        }
+
+        button {
+            padding: 6px 20px;
+            font-size: 14px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #0066ff;
+            color: white;
+            border: 0;
+            border-radius: 2em;
+            outline: none;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .popup {
+            position: fixed;
+            top: -50%;
+            width: 300px;
+            line-height: 200px;
+            text-align: center;
+            background: #0066ff;
+            color: #fff;
+            border-radius: 0.25em;
+            box-shadow: 0 0 10px #ccc;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .popup.active {
+            animation-name: animate;
+            animation-duration: 0.5s;
+            animation-timing-function: cubic-bezier(0.21, 0.85, 1, 1);
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        .close {
+            width: 40px;
+            line-height: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            font-size: 20px;
+            top: 100%;
+            box-shadow: 0 0 10px #888484;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close:hover {
+            filter: brightness(0.9);
+        }
+    </style>
+</head>
+<body>
+<button>唤起弹窗</button>
+<div class="popup">
+    我是弹窗
+    <div class="close">x</div>
+</div>
+</body>
+<script>
+  const show = document.getElementsByTagName("button")[0];
+  const close = document.getElementsByClassName("close")[0];
+  const popup = document.getElementsByClassName("popup")[0];
+
+  show.onclick = function () {
+    popup.className += " active";
+  };
+
+  close.onclick = function () {
+    popup.className = "popup";
+  };
+</script>
+</html>

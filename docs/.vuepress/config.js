@@ -1,9 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+const process = require("process");
 
 const ignoreList = [".vuepress", ".DS_Store"];
 
-function buildChildren(path) {
+const workPath = path.join(process.cwd() + "/docs");
+
+function buildChildren(path, parentName = "") {
   const files = fs.readdirSync(path);
   return files
     .map((file) => {
@@ -11,14 +14,14 @@ function buildChildren(path) {
       const current = {title: file};
       const subPath = `${path}/${file}`;
       if (fs.statSync(subPath).isDirectory()) {
-        current.children = buildChildren(subPath);
+        current.children = buildChildren(subPath, `${parentName}/${file}`);
       } else {
         if (file === "README.md") {
-          current.path = `${path.slice(37)}/`;
+          current.path = `${parentName}/`;
         } else {
           const suffixName = file.slice(-3);
           if (suffixName !== ".md") return;
-          current.path = `${path.slice(37)}/${file.slice(0, -3)}`;
+          current.path = `${parentName}/${file.slice(0, -3)}`;
         }
       }
       return current;
@@ -26,8 +29,7 @@ function buildChildren(path) {
     .filter((item) => item);
 }
 
-console.log(path.resolve(__dirname));
-const sidebar = buildChildren(path.resolve(__dirname, "../"));
+const sidebar = buildChildren(workPath);
 
 module.exports = {
   title: "前端随笔 FE-Essay",

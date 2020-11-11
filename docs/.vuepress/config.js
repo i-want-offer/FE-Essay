@@ -26,6 +26,7 @@ function buildChildren(path) {
     .filter((item) => item);
 }
 
+console.log(path.resolve(__dirname));
 const sidebar = buildChildren(path.resolve(__dirname, "../"));
 
 module.exports = {

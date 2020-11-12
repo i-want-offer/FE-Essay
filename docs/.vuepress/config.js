@@ -11,7 +11,7 @@ function buildChildren(path, parentName = "") {
   return files
     .map((file) => {
       if (ignoreList.includes(file)) return;
-      const current = {title: file};
+      const current = { title: file };
       const subPath = `${path}/${file}`;
       if (fs.statSync(subPath).isDirectory()) {
         current.children = buildChildren(subPath, `${parentName}/${file}`);
@@ -36,7 +36,7 @@ module.exports = {
   description:
     "记录前端重要知识点和遇到的好文章，同时还有前端重要算法知识，但最关键的是包含各大小厂真题。",
   themeConfig: {
-    nav: [{text: "GitHub", link: "https://github.com/i-want-offer"}],
+    nav: [{ text: "GitHub", link: "https://github.com/i-want-offer" }],
     sidebar,
   },
   dest: path.resolve(__dirname, "../", "../", "dist"),

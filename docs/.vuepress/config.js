@@ -40,5 +40,5 @@ module.exports = {
     sidebar,
   },
   dest: path.resolve(__dirname, "../", "../", "dist"),
-  base: "/FE-Essay.github.io/",
+  base: "/FE-Essay/",
 };

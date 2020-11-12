@@ -6,13 +6,13 @@
 
 ## js new 执行构造函数的的过程
 
-[手写 new](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/new/README.md)
+[手写 new](https://i-want-offer.github.io/FE-Essay/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/new/)
 
 ## js 说一下 this 指向
 
 就是说 this 绑定的几种情况
 
-[this绑定](https://github.com/i-want-offer/FE-Interview-questions/blob/master/JS/JavaScript%20%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97/this.md)
+[this绑定](https://i-want-offer.github.io/FE-Essay/JS/JavaScript%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97/this.html)
 
 ## 说一下 bind 函数结构
 
@@ -20,7 +20,7 @@
 
 我说了寄生组合继承
 
-[手写寄生组合继承](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/extends/README.md)
+[手写寄生组合继承](https://i-want-offer.github.io/FE-Essay/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/extends/)
 
 中间他问了为什么需要把子函数的constructor 修改回本身：
 
@@ -40,25 +40,25 @@ const reg = /((\w\.)+(qq.com)$)|^(qq.com)$/
 
 ## 说一下 DOM事件流模型
 
-[DOM事件](https://github.com/i-want-offer/FE-Interview-questions/blob/master/JS/DOM%E4%BA%8B%E4%BB%B6.md)
+[DOM事件](https://i-want-offer.github.io/FE-Essay/JS/DOM%E4%BA%8B%E4%BB%B6.html)
 
 ## 说一下你知道的 HTTP 状态码
 
-[HTTP状态](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1/HTTP%20%E7%8A%B6%E6%80%81%E7%A0%81.md)
+[HTTP状态](https://i-want-offer.github.io/FE-Essay/%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1/HTTP%E7%8A%B6%E6%80%81%E7%A0%81.html)
 
 ## 浏览器缓存的过程
 
-[浏览器缓存](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98.md)
+[浏览器缓存](https://i-want-offer.github.io/FE-Essay/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98.html)
 
 ## 说一下 XSS
 
-[前端安全](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E5%AE%89%E5%85%A8/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8.md)
+[前端安全](https://i-want-offer.github.io/FE-Essay/%E5%AE%89%E5%85%A8/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8.html)
 
 ### 如何防范
 
 ## 说一下 CSRF
 
-[前端安全](https://github.com/i-want-offer/FE-Interview-questions/blob/master/%E5%AE%89%E5%85%A8/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8.md)
+[前端安全](https://i-want-offer.github.io/FE-Essay/%E5%AE%89%E5%85%A8/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8.html)
 
 ### 危险网站 B 如何拿到受信任网站 A 的 cookie
 

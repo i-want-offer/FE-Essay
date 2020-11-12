@@ -4,7 +4,7 @@
 
 1.  写一个 Promise.all（功能要跟标准一样）
 
-    [手写 Promise](https://github.com/LaamGinghong/handwritten-code/blob/master/promise/promise.js)
+    [手写 Promise](https://i-want-offer.github.io/FE-Essay/%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/promise/)
 
 2.  只能通过 asyncAdd(a,b, callback) 这个异步方法去做加法，编写函数，参数为 Array<number>，返回参数数组的和
 

@@ -21,7 +21,7 @@
 
 ## ES6/ES7/ES8 的特性
 
-[ES Next](https://github.com/i-want-offer/FE-Interview-questions/blob/master/JS/ES%20Next%20%E6%96%B0%E7%89%B9%E6%80%A7.md)
+[ES Next](https://i-want-offer.github.io/FE-Essay/JS/ES-Next%E6%96%B0%E7%89%B9%E6%80%A7.html)
 
 ## 说说 DOM 事件流
 

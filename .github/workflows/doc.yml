@@ -23,7 +23,7 @@ jobs:
       - name: Install
         run: yarn --force
 
-      _ name: Build
+      - name: Build
         run: yarn build
 
       - name: Deploy

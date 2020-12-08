@@ -11,8 +11,8 @@ var newObj = JSON.parse(JSON.stringify(someObj));
 function deepClone(data) {
   if (typeof data === 'object') {
     const result = Array.isArray(data) ? [] : {};
-    for (let key in result) {
-      if (typeof result[key] === 'object') {
+    for (let key in data) {
+      if (typeof data[key] === 'object') {
         result[key] = deepClone(data[key]);
       } else {
         result[key] = data[key];

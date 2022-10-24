@@ -16,7 +16,7 @@ WebSocket 是一个持久化的网络通信协议，可以在单个 TCP 连接�
 
 2.  虽然 http1.1 默认开启了 keep-alive 长连接保持了这个 TCP 通道使得在一个 HTTP 连接中可以发送多个请求，接受多个响应，但是一个请求只能有一个响应，而且这个响应也是被动的，不能主动发起。
 
-3.  WebSocket 虽然是独立于 HTTP 的一种协议，但是 WebSocket 必须依赖 HTTP 协议进行一次握手（在握手阶段是一样的），我手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了，可以用一张图理解两者有交集，但并不是全部。
+3.  WebSocket 虽然是独立于 HTTP 的一种协议，但是 WebSocket 必须依赖 HTTP 协议进行一次握手（在握手阶段是一样的），握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了，可以用一张图理解两者有交集，但并不是全部。
 
     ![img](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93f1390c965f4bb28f97eeced69652d0~tplv-k3u1fbpfcp-zoom-1.image?imageslim)
 

@@ -1,0 +1,256 @@
+笔试题目 1.
+process.nextTickt(() => {
+  console.log('ticket')
+})
+
+Promise.resolve().then(() => {
+  console.log('promise1')
+}).then(() => {
+  console.log('promise2')
+})
+
+setImmediate(() => {
+  console.log('setImmediate')
+})
+
+console.log('end');
+
+2. https密钥的原理方面的
+
+3.
+
+1) http方法和作用
+2) response body相关的header
+3) http cache相关的header
+
+4.
+
+这几种继承的方式有哪些问题
+
+const Shape = function() {};
+const Area = function() {};
+
+1) Area.prototype = Shape.prototype;
+
+2) Area.prototype = new Shape();
+
+3)
+Area.prototype = Object.create(Shape.prototype);
+
+
+6.
+
+
+const coder = {
+  skills: ['js', 'css'],
+  run: function() {
+    for (var i = 0; i < skills.length - 1; ++i) {
+      setTimeout(function() {
+        console.log(this.skills[i] + i);
+      }, 1000);
+    }
+
+  }
+}
+
+上面代码存在问题，指出并修复
+
+
+7.
+
+CSS 内容，一个简单的 sticky footer 布局。大致内容就是当页面高度不够时，页脚固定在页面底部；当页面高度足够时，页脚被页面内容推送下去。
+<header>
+ <h1>Header</h1>
+</header>
+<main>
+  <p>Bacon Ipsum dolor sit amet...</p>
+</main>
+<footer>
+  <p>Footer</p>
+</footer>
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+main {
+  flex: 1;
+}
+
+
+8. 数字金额千分位转换，如 14290023.23 为 14,290,023.23，使用正则和非正则两种方式
+
+
+
+
+
+一面
+
+
+1. reflow和repaint
+
+2. 如何优化reflow和repaint，可以使用will-change提升图层
+
+3. bfc
+
+4. 实现decorator + debounce
+
+class Test {
+  @debounce()
+  test1() {}
+}
+
+
+5. es6 class和es5的prototype有啥区别
+
+6. 介绍下promise原理和api
+
+7. async 函数的实现原理并具体代码实现，会涉及到generator和promise
+
+
+
+二面
+1. 请说出以下代码打印的结果
+async function async1() {
+  console.log('async1 start');
+  await async2();
+  console.log('async1 end');
+}
+async function async2() {
+  console.log('async2');
+}
+
+console.log('script start');
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0);
+async1();
+new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+  }).then(function() {
+    console.log('promise2');
+});
+console.log('script end');
+
+
+2. node的event loop
+
+// timer  -- IO callback  -- poll -- setImediate  -- close
+
+3.
+class A {
+method1(){ console.log(this) }
+method2=()=>{console.log(this)}
+}
+const a = new A();
+a.method1(); //a
+a.method2(); //a
+a.method1.bind({name:'test'})(); // name:test
+a.method2.bind({name:'test'})(); // name:test //a
+a.method1.bind({name:'test'}).call(window) //name:test
+a.method2.bind({name:'test'}).call(window) //a
+
+4.
+arguments是数组吗，如果使arguments转成数组
+
+Array.prototype.slice.call(arguments) // length ,index
+Array.from()
+
+也可以提下 ...rest
+
+5. ==  ===的区别
+
+[] == false  //true
+4+'1'  = '41'
+'1' + 4 ='14'
+[1]==[1]
+
+6.
+给一棵二叉树 和 一个值，检查二叉树中的是否存在一条路径，这条路径上所有节点的值加起来等于给的那个初始值。例如，对于下面的二叉树，如果初始值是 22，那么存在一条路径 ?5->4->11->2?
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \      \
+7    2      1
+请实现如下这个函数
+Node :{ right:Node,left:Node,value:number }
+function hasPathSum(root:Node, sum:number):bool {
+  // 请输入答案
+if (!root) return false;
+if ( !root.left && !root.right) { // leaf node
+   return sum == root.value;
+}
+let result = false;
+if (root.left) {
+const has = hasPathSum(root.left, sum - root.value);
+if (has) result = true;
+}
+if (!result && root.right) {
+const has = hasPathSum(root.right, sum - root.value);
+if (has) result = true;
+}
+return result;
+};
+
+
+7.
+vue为什么从版本2开始换成虚拟树 1. 平台无关 2.
+
+8.
+http缓存相关
+
+http  1. last-modify  2.cache-control max-age
+if-modified-since
+
+min-fresh min-stale immutable
+no-store  ETag 304   // max-age 200
+no-cache
+
+9.
+xss
+反射、存储
+
+10.
+vue css scope
+data-list[v-skdfhsd]
+
+
+
+
+
+三面
+1. 介绍上一家公司工作的主要内容，做的产品是否有线上地址可以直接查看
+
+
+2. 本人提到了ssr，然后让介绍nuxt的原理，node环境下是如何处理图片的（webpack会处理）
+
+
+3. [] == false 隐式类型转换
+
+
+4. 有 abcde 5个请求，如何顺序地输出请求结果（Promise.all)
+   如何尽早地输出结果，但保持顺序，比如b请求完成后，要等a也完成后才输出（需要一个数组保存各个请求的状态）
+
+
+5. 介绍egg.js本身和loader机制
+
+
+6. 问应用的qps是多少（本人回答应用用户少，不到1req/s）
+
+
+7. 如何应用需要服务更多的用户，如何考虑扩展性（分库分表，微服务等）
+
+
+8. 为什么换工作
+
+
+9. 问在以前公司的评级
+   问这样的评级是合理的吗（如果有几年没晋升，可以解释下为什么）
+   问这样的评级的在部门的起到的作用或者承担的责任（可以回答比如说中坚力量，技术引入，项目推行方面）
+   如果想要达到更高的评级，会做些什么（比如从提升效率，代码重用方面，当然个人奋斗很重要，也要考虑大环境，如果有新产品可以积极去加入）

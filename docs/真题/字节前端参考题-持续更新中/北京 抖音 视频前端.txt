@@ -1,0 +1,69 @@
+基础知识：
+
+盒子模型的理解？
+跨域的理解，如何解决跨域？纯前端方法如何解决跨域？
+webpack相关（啥也没答出来，就很尴尬，接下来也问不了问题了）
+
+
+react生命周期，老版本和新版本的区别
+
+看代码，说运行结果：
+- 选择器优先级问题，类、伪类、叠加
+// html
+<body>
+  <div class="box" />
+</body>
+
+// css
+.box, .box::after {
+  background-color: red;
+}
+
+.box {
+  background-color: green;
+}
+
+div .box {
+  background-color: yellow;
+}
+
+- 宏任务、微任务执行顺序，包括Promise与settimeout
+setTimeout(function() {
+  console.log(1)
+}, 0);
+new Promise(function(resolve) {
+  console.log(2);
+  for(var i=0 ; i < 10000 ; i++) {
+    if (i == 9999) {
+      resolve();
+    }
+  }
+  console.log(3);
+}).then(function() {
+  console.log(4);
+});
+console.log(5);
+
+- this作用域相关，包括箭头函数
+var A = 2;
+
+const B = {
+  f1: function() {
+    return this.A
+  },
+  f2: () => {
+    return this.A
+  },
+  A: 10
+}
+
+console.log(B.f1(), B.f2());
+const f1 = B.f1,
+  f2 = B.f2;
+console.log(f1(), f2());
+
+写算法：
+a_b_ccc_D_EEE_f ==> aBCccdeEEF
+移除下划线
+第一个单词不变
+后面所有单词首字母大小写翻转
